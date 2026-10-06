@@ -1,8 +1,11 @@
-__pycache__/
+*.egg-info/
 *.pyc
 *.pyo
-.venv/
-venv/
-*.egg-info/
 .env
+.pytest_cache/
+.venv/
+__pycache__/
+audit_log/*.jsonl
+audit_log/batch_results.json
 ci_reports/
+venv/
