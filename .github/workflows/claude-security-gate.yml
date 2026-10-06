@@ -66,7 +66,7 @@ jobs:
           # Fetch full history to enable accurate diff comparison
           fetch-depth: 0
 
-      # ── Step 2: Set up Python ─────────────────────────────────────────────
+      # ── Step 2: Set up Python ─────────────────────────────────────────
       - name: 🐍 Set up Python 3.11
         uses: actions/setup-python@v5
         with:
@@ -86,7 +86,7 @@ jobs:
         with:
           node-version: '20'
 
-      # ── Step 5: Install Claude Code CLI ──────────────────────────────────
+      # ── Step 5: Install Claude Code CLI ──────────────────────────────
       - name: 🤖 Install Claude Code CLI
         run: |
           npm install -g @anthropic-ai/claude-code
@@ -106,7 +106,7 @@ jobs:
             echo "no_python_changes=false" >> $GITHUB_OUTPUT
           fi
 
-      # ── Step 7: Skip if no Python files changed ───────────────────────────
+      # ── Step 7: Skip if no Python files changed ───────────────────────
       - name: ⏭️ Skip if no Python changes
         if: steps.changed-files.outputs.no_python_changes == 'true'
         run: |
@@ -327,7 +327,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      # ── Step 2: Set up Python ─────────────────────────────────────────────
+      # ── Step 2: Set up Python ─────────────────────────────────────────
       - name: 🐍 Set up Python 3.11
         uses: actions/setup-python@v5
         with:
@@ -339,12 +339,12 @@ jobs:
         with:
           node-version: '20'
 
-      # ── Step 4: Install Claude Code CLI ──────────────────────────────────
+      # ── Step 4: Install Claude Code CLI ──────────────────────────────
       - name: 🤖 Install Claude Code CLI
         run: |
           npm install -g @anthropic-ai/claude-code
           claude --version
-      # ── Step 5: Get PR diff ───────────────────────────────────────────────
+      # ── Step 5: Get PR diff ───────────────────────────────────────────
       - name: 📋 Extract PR changes
         id: pr-changes
         run: |
@@ -502,7 +502,7 @@ jobs:
           cat ci_reports/compliance_score.json | python3 -m json.tool 2>/dev/null || true
         continue-on-error: true
 
-      # ── Step 7: Post score as PR comment ──────────────────────────────────
+      # ── Step 7: Post score as PR comment ──────────────────────────────
       - name: 💬 Post compliance score comment to PR
         if: always()
         uses: actions/github-script@v7
@@ -558,7 +558,7 @@ jobs:
               body: body
             });
 
-      # ── Step 8: Enforce compliance gate ───────────────────────────────────
+      # ── Step 8: Enforce compliance gate ───────────────────────────────
       - name: 🚦 Enforce compliance score gate
         id: score-gate
         run: |
@@ -581,7 +581,7 @@ jobs:
             echo "   Score $SCORE meets the minimum threshold of $MIN_SCORE"
           fi
 
-      # ── Step 9: Upload scoring artifacts ─────────────────────────────────
+      # ── Step 9: Upload scoring artifacts ─────────────────────────────
       - name: 📤 Upload compliance scoring reports
         if: always()
         uses: actions/upload-artifact@v4
