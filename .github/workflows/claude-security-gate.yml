@@ -209,7 +209,7 @@ jobs:
           # Filtering for "content_block_delta" here always yields an empty
           # string, which silently collapses this whole check to defaults.
           claude \
-            --model claude-haiku-4-5 \
+            --model anthropic/claude-haiku-4.5 \
             --output-format json \
             -p "$PCI_PROMPT" \
             2>/dev/null \
@@ -220,7 +220,6 @@ jobs:
           try:
               envelope = json.loads(raw)
               result_text = (envelope.get('result') or '').strip()
-          except json.JSONDecodeError:
               result_text = ''
 
           # Claude sometimes wraps JSON in a markdown code fence even when
@@ -432,7 +431,7 @@ jobs:
           # step for why stream-json + content_block_delta always produced
           # an empty result_text (and therefore score 0 / grade UNKNOWN).
           claude \
-            --model claude-sonnet-4-5 \
+            --model anthropic/claude-sonnet-4.5 \
             --output-format json \
             -p "$JUDGE_PROMPT" \
             2>/dev/null \
